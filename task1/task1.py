@@ -1,6 +1,7 @@
 import sys
 
-if __name__ == '__main__':
+
+def main():
 
     arr = list(range(1, int(sys.argv[1]) + 1))
     len_check_arr = int(sys.argv[2])
@@ -10,7 +11,6 @@ if __name__ == '__main__':
     next_el_ind = (flag + len_check_arr - 1) % len_arr
 
     while arr[next_el_ind] != arr[0]:
-
         flag = next_el_ind
         path.append(flag + 1)
 
@@ -18,6 +18,10 @@ if __name__ == '__main__':
 
     for path_item in path:
         print(path_item)
+
+if __name__ == '__main__':
+
+    main()
 
 
 
