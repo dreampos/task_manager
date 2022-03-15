@@ -6,7 +6,7 @@ def check_point_inside_circle(point_coords, circle_center_coords, circle_radius)
     if cond_ex < circle_radius ** 2:
         return 1
     elif cond_ex == circle_radius ** 2:
-        return  0
+        return 0
     else:
         return 2
 
@@ -24,6 +24,7 @@ def main():
             if len(points_info) >= 1:
                 for point_coords in points_info[: min(100, len(points_info))]:
                     point_coords_float = list(map(float, point_coords.split()))
+
                     print(check_point_inside_circle(point_coords_float, circle_center_coords, circle_radius))
 
 
