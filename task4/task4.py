@@ -12,7 +12,7 @@ def main():
 
     with open(sys.argv[1], "r") as nums_file:
 
-        nums = list(map(int, nums_file.read().split('\n')))
+        nums = list(map(int, nums_file.read().strip().split('\n')))
         min_dist = calc_min_dist(nums)
         print(min_dist)
 
