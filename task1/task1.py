@@ -16,8 +16,7 @@ def main():
 
         next_el_ind = (flag + len_check_arr - 1) % len_arr
 
-    for path_item in path:
-        print(path_item)
+    print("".join(map(str, path)))
 
 if __name__ == '__main__':
 
