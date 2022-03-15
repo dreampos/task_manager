@@ -15,11 +15,11 @@ def main():
     with open(sys.argv[1], "r") as center_info_file:
         with open(sys.argv[2], "r") as points_info_file:
 
-            circle_center_info = center_info_file.read().split('\n')
+            circle_center_info = center_info_file.read().strip().split('\n')
             circle_center_coords = list(map(float, circle_center_info[0].split()))
             circle_radius = float(circle_center_info[1])
 
-            points_info = points_info_file.read().split('\n')
+            points_info = points_info_file.read().strip().split('\n')
 
             if len(points_info) >= 1:
                 for point_coords in points_info[: min(100, len(points_info))]:
