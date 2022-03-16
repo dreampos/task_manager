@@ -1,34 +1,32 @@
 import sys
 import json
-import copy
 
+
+def DFS(item, values):
+
+    if 'value' in item.keys():
+        val_ind = next((i for i, x in enumerate(values) if x['id'] == item['id']), False)
+        if val_ind is not False:
+            item['value'] = values[val_ind]['value']
+
+    if 'values' in item.keys():
+        for successor in item['values']:
+            DFS(successor, values)
 
 
 def main():
 
     with open(sys.argv[1], "r") as tasks_json:
         with open(sys.argv[2], "r") as values_json:
-            data = json.load(tasks_json)
-            values = json.load(values_json)
 
-            report = copy.deepcopy(data['tests'])
+            values = json.load(values_json)['values']
+            report = json.load(tasks_json)['tests']
 
-            print(values['values'])
+            for i in range(len(report)):
+                DFS(report[i], values)
 
-            # for i in range(len(data['tests'])):
-            #
-            #     data_item = data['tests'][i]
-            #     report_item = report[i]
-            #
-            #     report_item['value'] = values_item["id"]
-
-
-
-            # print(data)
-            # print(data["tests"][0])
-
-
-            # report = open("report.json", "x")
+            with open("report.json", "w") as report_file:
+                json.dump(report, report_file)
 
 
 if __name__ == '__main__':
